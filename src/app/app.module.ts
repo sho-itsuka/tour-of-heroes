@@ -7,8 +7,8 @@ import { AppRoutingModule }    from './app-routing.module';
 import { AppComponent }        from './app.component';
 import { HeroesComponent }     from './heroes/heroes.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
-import { MessagesComponent } from './messages/messages.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { MessagesComponent }   from './messages/messages.component';
+import { DashboardComponent }  from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

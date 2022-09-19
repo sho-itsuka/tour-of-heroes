@@ -12,6 +12,12 @@ export class HeroService {
 
   constructor(private messageService: MessageService) { }
 
+  getHeroes(): Observable<Hero[]> {
+    const heroes = of(HEROES)
+    this.messageService.add('HeroService: fetched heroes')
+    return heroes
+  }
+
   getHero(id: number): Observable<Hero> {
     const hero = HEROES.find(h => h.id === id)!
     // idを埋め込むためのJSのテンプレートリテラルを定義するため、``(バッククォート)を用いる

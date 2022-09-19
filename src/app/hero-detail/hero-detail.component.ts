@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 // ActivatedRoute インスタンスへのルートに関する情報を保持する
-import { ActivatedRoute }           from '@angular/router';
+import { ActivatedRoute }    from '@angular/router';
 // Location 前のビューに戻ることができる
-import { Location }                 from '@angular/common';
+import { Location }          from '@angular/common';
 
 import { HeroService } from '../hero.service';
 import { Hero }        from '../hero';
@@ -13,7 +13,7 @@ import { Hero }        from '../hero';
   styleUrls:   ['./hero-detail.component.css']
 })
 export class HeroDetailComponent implements OnInit {
-  @Input() hero?: Hero
+  hero: Hero | undefined
 
   constructor(
     private route:       ActivatedRoute,
@@ -30,8 +30,12 @@ export class HeroDetailComponent implements OnInit {
   // JSのNumber関数は文字列を数値に変換する(ヒーロのidの値となる)
   getHero(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'))
-    this.heroService.getHeroes(id)
+    this.heroService.getHero(id)
       .subscribe(hero => this.hero = hero)
+  }
+  // goBack()メソッドを用いて、ブラウザの一つ前にナビゲートする(import Location)
+  goBack(): void {
+    this.location.back()
   }
 
 }
