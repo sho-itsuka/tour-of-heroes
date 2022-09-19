@@ -29,7 +29,7 @@ export class HeroDetailComponent implements OnInit {
   // "id"キーは、フェッチするヒーローのidを返す
   // JSのNumber関数は文字列を数値に変換する(ヒーロのidの値となる)
   getHero(): void {
-    const id = perseInt(this.route.snapshot.paramMap.get('id')!, 10)
+    const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10)
     this.heroService.getHero(id)
       .subscribe(hero => this.hero = hero)
   }
