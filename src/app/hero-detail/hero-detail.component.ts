@@ -29,13 +29,20 @@ export class HeroDetailComponent implements OnInit {
   // "id"キーは、フェッチするヒーローのidを返す
   // JSのNumber関数は文字列を数値に変換する(ヒーロのidの値となる)
   getHero(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'))
+    const id = perseInt(this.route.snapshot.paramMap.get('id')!, 10)
     this.heroService.getHero(id)
       .subscribe(hero => this.hero = hero)
   }
   // goBack()メソッドを用いて、ブラウザの一つ前にナビゲートする(import Location)
   goBack(): void {
     this.location.back()
+  }
+
+  save(): void {
+    if (this.hero) {
+      this.heroService.updateHero(this.hero)
+        .subscribe(() => this.goBack())
+    }
   }
 
 }
